@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Admin's name</h1>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      
+      <div class="row">
+        
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <h3 class="panel-title">List</h3>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+          <button type="button" class="btn btn-default pull-right" (click)="togglePanel()">{{toggleBtnText}}</button>
+        </div>
+        
+      </div>
+    </div>
+    <div class="panel-body" [ngStyle]="{'display': toggle}" >
+      <div class="row">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <input type="text" id="input" class="form-control" [(ngModel)]="userName" (input)="setBtnVisibility()">
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" [ngClass]="{'userEmpty': !isUserName}">
+          <p [ngStyle]="{'color': 'red'}">{{userName}}</p>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <button type="button" class="btn btn-primary" [disabled]="!isUserName"
+            (click)="resetUserName()">button</button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="row">
+    
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <p *ngFor="let logRecord of clickLog" 
+      [ngStyle]="{'backgroundColor': setBackColor(logRecord)}"
+      [ngClass]="{'logText': this.clickLog.indexOf(logRecord) > 4}">{{logRecord}}</p>
+    </div>
+    
+  </div>
+  
+
+</div>
